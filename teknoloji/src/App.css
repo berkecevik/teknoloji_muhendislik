@@ -1,0 +1,8 @@
+body {
+  background: inherit; /* Background will be controlled by Material UI's theme. */
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Roboto', Arial, sans-serif; /* Use Material UI's typography. */
+  overflow-x: hidden; /* Ensure no horizontal scrolling */
+  
+}
