@@ -7,11 +7,12 @@ import BrandPage from "./pages/BrandPage";
 import ModelPage from "./pages/ModelPage";
 import Marka from "./pages/Markalar";
 import ProductsPage from "./pages/ProductsPage";
+import Hakkimizda from "./pages/Hakkimizda";
 
 
 const routes: RouteObject[] = [
   { path: "/", element: <HomeEngineering /> },
-  // { path: "/about", element: <About /> },
+  { path: "/hakkimizda", element: <Hakkimizda /> },
   { path: "/contact", element: <Contact /> },
   { path: "/cekidemiri", element: <CekiDemiri /> },
   { path: "/cekidemiri/:brandName", element: <BrandPage /> },

@@ -8,7 +8,8 @@ const resources = {
             home: "Ana Sayfa",
             about: "Hakkımızda",
             contact: "İletişim",
-            companies: "Şirketler",
+            cekidemiri: "Çeki Demiri",
+            markalar: "Markalar",
             language_selection: "Dil Seçimi",
             turkish: "Türkçe",
             english: "İngilizce",
@@ -28,13 +29,13 @@ const resources = {
             engineering_first_check1: "MÜHENDİSLİKTE KUSURSUZ TASARIM VE ÜRETİM",
             engineering_first_check2: "YENİLİKÇİ TEKNOLOJİLERLE VERİMLİ ÇÖZÜMLER",
             engineering_first_check3: "SEKTÖRÜN ÖNCÜSÜ OLARAK KALİTELİ HİZMET",
-            engineering_first_button1: "DETAYLI BİLGİ",
-            engineering_first_button2: "HİZMETLERİMİZ",
+            engineering_first_button1: "MARKALAR",
+            engineering_first_button2: "ÇEKİ DEMİRLERİ",
             //
-            select_your_car:"Lütfen Aracınızı Seçin",
-            select_brand:"Araç Markası",
-            select_model:"Araç Modeli",
-            see_model:"Modeli Görün",
+            select_your_car: "Lütfen Aracınızı Seçin",
+            select_brand: "Araç Markası",
+            select_model: "Araç Modeli",
+            see_model: "Modeli Görün",
             //
             engineering_about_title: "ARAÇLARINIZI GÜVENLE TESLİM EDİN",
             engineering_about_title2: "Otobüs ve Otomotiv",
@@ -71,7 +72,6 @@ const resources = {
             engineering_project_card2_category: "Montaj",
             engineering_project_card2_title: "Çeki Demiri",
 
-
             // Hakkımızda
             about_title: "Hakkımızda",
             about_subtitle: "Renault Teknoloji, otomotiv sektöründe yenilikçi çözümler sunan bir liderdir.",
@@ -88,24 +88,32 @@ const resources = {
             mission_text: "Renault marka otomobillerin hasar onarımlarını hızlı ve teknolojik araçlar kullanarak minimum maliyetle gerçekleştirmek, müşterilerimize hak ettikleri kalite ve konforu üstün hizmet anlayışıyla sunarak güven yaratmaktır.",
             // İletişim
             contact_title: "İletişim",
-            label_1: "Adınız",
-            label_2: "E-posta",
-            label_3: "Mesajınız",
-            button_send: "Gönder",
+            contact_description: "Sizlere yardımcı olmak için buradayız! Herhangi bir sorunuz varsa veya destek ihtiyacınız varsa, aşağıdaki kanallar aracılığıyla bizimle iletişime geçmekten çekinmeyin. Bizi ziyaret edebilir, arayabilir veya e-posta ve sosyal medya aracılığıyla ulaşabilirsiniz.",
+            address: "Adres",
+            follow_us: "Bizi Takip Edin",
+            address_detail: "Taşyaka, 254. Sk. No:64, 48300 Fethiye/Muğla",
             // Çeki Demiri
             cekidemiri_title: "Çeki Demiri",
             searchbar: "Marka Ara",
             cekidemiri_notfound: "Marka bulunamadı.",
             // Brand Page
-            brandpage_text:"Modelleri",
+            brandpage_text: "Modelleri",
             // ModelPage
-            modelpage_text:"Bu model için görsel yok.",
+            modelpage_text: "Bu model için görsel yok.",
             // Markalar
-            markalar_title:"Çeki Demiri Markaları",
+            markalar_title: "Çeki Demiri Markaları",
             // Product Page
-            productpage_title:"Ürünleri",
-            product_notfound:"Bu markaya ait ürün bulunmamaktadır.",
-
+            productpage_title: "Ürünleri",
+            product_notfound: "Bu markaya ait ürün bulunmamaktadır.",
+            // Footer
+            footer_title1: "Hizmetlerimiz",
+            footer_label1_1: "Çeki Demiri",
+            footer_label1_2: "İletişim",
+            footer_label1_3: "Hakkımızda",
+            footer_title2: "İletişim Bilgileri",
+            footer_label2: "Taşyaka, 254. Sk. No:64, 48300 Fethiye/Muğla",
+            footer_title3: "Bizi Takip Edin",
+            footer_rights: "Tüm hakları saklıdır.",
         },
     },
     en: {
@@ -113,7 +121,8 @@ const resources = {
             home: "Home",
             about: "About",
             contact: "Contact",
-            companies: "Companies",
+            cekidemiri: "Towbar",
+            markalar: "Brands",
             language_selection: "Language Selection",
             turkish: "Turkish",
             english: "English",
@@ -126,15 +135,20 @@ const resources = {
             success_message: "Your message has been successfully sent",
             error_message: "Error, Please try again",
             sending: "Sending...",
-            
+
             // Home Mühendislik
             engineering_first_title: "RELIABLE AND INNOVATIVE SOLUTIONS",
             engineering_first_title2: "AT TEKNOLOJI ENGINEERING",
             engineering_first_check1: "PERFECT DESIGN AND MANUFACTURING IN ENGINEERING",
             engineering_first_check2: "EFFICIENT SOLUTIONS WITH INNOVATIVE TECHNOLOGIES",
             engineering_first_check3: "HIGH-QUALITY SERVICE AS AN INDUSTRY LEADER",
-            engineering_first_button1: "DETAILED INFORMATION",
-            engineering_first_button2: "OUR SERVICES",
+            engineering_first_button1: "BRANDS",
+            engineering_first_button2: "TOWBARS",
+            //
+            select_your_car: "Please Select Your Vehicle",
+            select_brand: "Car Brand",
+            select_model: "Car Model",
+            see_model: "See The Model",
             //
             engineering_about_title: "TRUST YOUR VEHICLES WITH US",
             engineering_about_title2: "Bus and Automotive",
@@ -188,23 +202,32 @@ const resources = {
             mission_text: "To repair damages on Renault vehicles quickly and efficiently using advanced technological tools at minimum cost, providing our customers with the quality and comfort they deserve through a superior service approach that builds trust.",
             // Contact
             contact_title: "Contact",
-            label_1: "Full Name",
-            label_2: "E-Mail",
-            label_3: "Your Message",
-            button_send: "Send",
+            address: "Address",
+            contact_description: "We are here to assist you! If you have any questions or need support, feel free to contact us through the following channels. You can visit us, call us, or reach out via email and social media.",
+            follow_us: "Follow Us",
+            address_detail: "Taşyaka, 254. St. No:64, 48300 Fethiye/Muğla",
             // Towbar
             cekidemiri_title: "Towbar",
             searchbar: "Search Brand",
             cekidemiri_notfound: "Brand not found.",
             // Brand Page
-            brandpage_text:"Models",
+            brandpage_text: "Models",
             // Model Page
-            modelpage_text:"No images available for this model.",
+            modelpage_text: "No images available for this model.",
             // Markalar
-            markalar_title:"Towbar Brands",
+            markalar_title: "Towbar Brands",
             // Product Page
-            productpage_title:"Products",
-            product_notfound:"There are no products of this brand.",
+            productpage_title: "Products",
+            product_notfound: "There are no products of this brand.",
+            // Footer
+            footer_title1: "Our Services",
+            footer_label1_1: "Towbar",
+            footer_label1_2: "Contact",
+            footer_label1_3: "About Us",
+            footer_title2: "Contact Information",
+            footer_label2: "Taşyaka, 254. St. No:64, 48300 Fethiye/Muğla",
+            footer_title3: "Follow Us",
+            footer_rights: "All rights reserved.",            
 
         },
     },

@@ -194,15 +194,15 @@ const HomeEngineering: React.FC = () => {
           <Typography variant="h4" gutterBottom>
             {t("select_your_car")}
           </Typography>
-          <Box sx={{ display: "flex", justifyContent: "center", gap: 2, flexWrap: "wrap", mt: 3 }}>
+          <Box sx={{ display: "flex", justifyContent: "center", gap: 2, flexWrap: "wrap", mt: 3}}>
             {/* Brand Selection */}
             <FormControl sx={{ minWidth: 200 }}>
-              <InputLabel>{t("select_brand")}</InputLabel>
+              <InputLabel variant="filled">{t("select_brand")}</InputLabel>
               <Select
                 value={selectedBrand}
                 onChange={(e) => {
                   setSelectedBrand(e.target.value);
-                  setSelectedModel(""); // Reset model when changing brand
+                  setSelectedModel("");
                 }}
               >
                 {Object.keys(carData).map((brand) => (
@@ -215,7 +215,7 @@ const HomeEngineering: React.FC = () => {
 
             {/* Model Selection */}
             <FormControl sx={{ minWidth: 200 }} disabled={!selectedBrand}>
-              <InputLabel>{t("select_model")}</InputLabel>
+              <InputLabel variant="filled">{t("select_model")}</InputLabel>
               <Select
                 value={selectedModel}
                 onChange={(e) => setSelectedModel(e.target.value)}

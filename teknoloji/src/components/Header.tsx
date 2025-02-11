@@ -122,16 +122,16 @@ const Header: React.FC = () => {
               <Typography>{t("work_hours")}</Typography>
             </Box>
             <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-              <IconButton size="small" sx={{ color: "#000" }} onClick={() => window.location.href = "tel:+905367920868"}>
+              <IconButton size="small" sx={{ color: "#000" }} onClick={() => window.location.href = "tel:+905344045981"}>
                 <Phone />
               </IconButton>
-              <Typography>{t("phone")}: +90 536 792 0868</Typography>
+              <Typography>{t("phone")}: +90 534 404 5981</Typography>
             </Box>
             <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
               <IconButton size="small" sx={{ color: "#000" }}>
                 <Email />
               </IconButton>
-              <Typography>{t("email")}: info@example.com</Typography>
+              <Typography>{t("email")}: teknolojimuh48@gmail.com</Typography>
             </Box>
           </Box>
         </Grid>
@@ -167,11 +167,17 @@ const Header: React.FC = () => {
               <Button color="inherit" component={Link} to="/">
                 {t("home")}
               </Button>
-              <Button color="inherit" component={Link} to="/about">
-                {t("about")}
+              <Button color="inherit" component={Link} to="/hakkimizda">
+                {t("hakkimizda")}
               </Button>
               <Button color="inherit" component={Link} to="/contact">
                 {t("contact")}
+              </Button>
+              <Button color="inherit" component={Link} to="/cekidemiri">
+                {t("cekidemiri")}
+              </Button>
+              <Button color="inherit" component={Link} to="/markalar">
+              {t("markalar")}
               </Button>
             </Box>
 
@@ -229,13 +235,15 @@ const Header: React.FC = () => {
         </IconButton>
 
         {/* Header Title */}
-        <Typography variant="h6">TEKNOLOJİ</Typography>
+        <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Typography variant="h6">TEKNOLOJİ</Typography>
+        </Link>
 
         {/* Language Button */}
         <Button
           variant="outlined"
           onClick={(e) => {
-            e.stopPropagation(); // Prevent Drawer closing
+            e.stopPropagation();
             handleLanguageMenuClick(e);
           }}
           sx={{
@@ -255,7 +263,14 @@ const Header: React.FC = () => {
         </Button>
 
         {/* Drawer Component */}
-        <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
+        <Drawer
+          anchor="left"
+          open={drawerOpen}
+          onClose={toggleDrawer(false)}
+          PaperProps={{
+            sx: { backgroundColor: "#1E1E1E", color: "white" }, // Background color
+          }}
+        >
           <Box sx={{ width: 250, padding: 2 }} role="presentation">
             {/* Close Icon */}
             <IconButton
@@ -268,74 +283,38 @@ const Header: React.FC = () => {
 
             {/* Drawer List */}
             <List>
-              <ListItem component={Link} to="/" onClick={toggleDrawer(false)} sx={{ cursor: "pointer" }}>
-                <ListItemText primary={t("home")} />
-              </ListItem>
-              <ListItem component={Link} to="/about" onClick={toggleDrawer(false)} sx={{ cursor: "pointer" }}>
-                <ListItemText primary={t("about")} />
-              </ListItem>
-              <ListItem component={Link} to="/contact" onClick={toggleDrawer(false)} sx={{ cursor: "pointer" }}>
-                <ListItemText primary={t("contact")} />
-              </ListItem>
-              <ListItem
-                component="li"
-                onClick={(e) => {
-                  e.stopPropagation(); // Prevent Drawer closing
-                  handleClick(e); // Open submenu
-                }}
-              >
-                <ListItemText primary={t("companies")} />
-              </ListItem>
+              {[
+                { label: t("home"), to: "/" },
+                { label: t("about"), to: "/hakkimizda" },
+                { label: t("contact"), to: "/contact" },
+                { label: t("cekidemiri"), to: "/cekidemiri" },
+              ].map((item, index) => (
+                <ListItem
+                  key={index}
+                  component={Link}
+                  to={item.to}
+                  onClick={toggleDrawer(false)}
+                  sx={{
+                    cursor: "pointer",
+                    "&:hover": { backgroundColor: "#333" }, // Custom hover effect
+                    "&:focus, &:active": { backgroundColor: "transparent" }, // Prevent purple color
+                    textDecoration: "none",
+                  }}
+                >
+                  <ListItemText
+                    primary={item.label}
+                    sx={{
+                      color: "white", // Set text color to white
+                      "& span": {
+                        color: "white !important", // Override default MUI active/focus color
+                      },
+                    }}
+                  />
+                </ListItem>
+              ))}
             </List>
           </Box>
         </Drawer>
-
-
-        {/* Companies Submenu */}
-        <Menu
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "left",
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "left",
-          }}
-        >
-          <MenuItem
-            onClick={() => {
-              setAnchorEl(null); // Close submenu
-              toggleDrawer(false)(); // Close drawer
-            }}
-            component={Link}
-            to="/"
-          >
-            {t("technology_renault")}
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              setAnchorEl(null); // Close submenu
-              toggleDrawer(false)(); // Close drawer
-            }}
-            component={Link}
-            to="/construction"
-          >
-            {t("technology_construction")}
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              setAnchorEl(null); // Close submenu
-              toggleDrawer(false)(); // Close drawer
-            }}
-            component={Link}
-            to="/engineering"
-          >
-            {t("technology_engineering")}
-          </MenuItem>
-        </Menu>
 
 
         {/* Language Menu */}

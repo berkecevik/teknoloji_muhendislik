@@ -13,6 +13,7 @@ import InstagramButton from "./components/InstagramButton";
 import WhatsAppButton from "./components/WhatsAppButton";
 import Marka from "./pages/Markalar";
 import ProductsPage from "./pages/ProductsPage";
+import Hakkimizda from "./pages/Hakkimizda";
 
 
 const App: React.FC = () => (
@@ -30,6 +31,7 @@ const App: React.FC = () => (
             <Route path="/cekidemiri/:brandName/:modelName" element={<ModelPage />} />
             <Route path="/markalar" element={<Marka />} />
             <Route path="/markalar/:brandName" element={<ProductsPage />} />
+            <Route path="/hakkimizda" element={<Hakkimizda />} />            
           </Routes>
           <WhatsAppButton />
           <InstagramButton />
