@@ -29,7 +29,7 @@ const Hakkimizda: React.FC = () => {
 
         {/* Carousel Section */}
         <Carousel>
-          {["/src/assets/hakkimizda/1.jpeg", "/src/assets/hakkimizda/2.jpeg", "/src/assets/hakkimizda/3.jpeg",
+          {["/src/assets/hakkimizda/1.jpeg", "/src/assets/hakkimizda/2.jpeg",
           ].map((image, index) => (
             <Card key={index}>
               <CardMedia
@@ -38,24 +38,19 @@ const Hakkimizda: React.FC = () => {
                 image={image}
                 alt={`Services ${index + 1}`}
               />
-              <CardContent sx={{ p: 2 }}>
-                <Typography variant="body2" color="text.secondary" textAlign="center">
-                  {`Servisler ${index + 1}`}
-                </Typography>
-              </CardContent>
             </Card>
           ))}
         </Carousel>
 
         {/* History Section */}
-        <Paper elevation={3} sx={{ p: 4, mb: 4, mt: 4 }}>
+        {/* <Paper elevation={3} sx={{ p: 4, mb: 4, mt: 4 }}>
           <Typography variant="h5" gutterBottom>
             {t("history_title")}
           </Typography>
           <Typography variant="body1" paragraph>
             {t("history_text")}
           </Typography>
-        </Paper>
+        </Paper> */}
 
         {/* Expertise Section */}
         <Paper elevation={3} sx={{ p: 4, mb: 4 }}>
@@ -65,9 +60,9 @@ const Hakkimizda: React.FC = () => {
           <Typography variant="body1" paragraph>
             {t("expertise_text1")}
           </Typography>
-          <Typography variant="body1" paragraph>
+          {/* <Typography variant="body1" paragraph>
             {t("expertise_text2")}
-          </Typography>
+          </Typography> */}
         </Paper>
 
         {/* Facility Section */}

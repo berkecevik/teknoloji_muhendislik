@@ -4,7 +4,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import InstagramIcon from "@mui/icons-material/Instagram";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import FacebookIcon from "@mui/icons-material/Facebook";
 import { useTranslation } from "react-i18next";
 
 const Footer: React.FC = () => {
@@ -80,8 +80,14 @@ const Footer: React.FC = () => {
           >
             <InstagramIcon />
           </IconButton>
-          <IconButton href="#" sx={{ color: "white" }}>
-            <LinkedInIcon />
+          <IconButton
+            component="a"
+            href="https://www.facebook.com/profile.php?id=100090676906052"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{ color: "white" }}
+          >
+            <FacebookIcon />
           </IconButton>
         </Grid>
       </Grid>

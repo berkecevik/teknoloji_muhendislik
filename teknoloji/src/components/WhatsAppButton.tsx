@@ -1,24 +1,10 @@
 import React from "react";
 import { Fab, Zoom } from "@mui/material";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import { useLocation } from "react-router-dom";
 
 const WhatsAppButton: React.FC = () => {
-  const location = useLocation();
 
-  
-  const engineeringPaths = [
-    "/engineering",
-    "/engineering/cekidemiri",
-  ];
-
-  const isEngineeringPage = engineeringPaths.some((path) =>
-    location.pathname.startsWith(path)
-  );
-
-  const whatsappLink = isEngineeringPage
-    ? "https://wa.me/+905344045981" // X address for engineering pages
-    : "https://wa.me/+905444288042"; // Y address for other pages
+  const whatsappLink = "https://wa.me/+905344045981";
 
   // Open WhatsApp when clicked
   const goToWhatsApp = () => {

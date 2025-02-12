@@ -1,19 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 import Typography from "@mui/material/Typography";
-import { Button, MenuItem, Select, FormControl, InputLabel } from "@mui/material"; import CheckIcon from "@mui/icons-material/Check";
+import { Button, MenuItem, Select, FormControl, InputLabel, IconButton } from "@mui/material"; import CheckIcon from "@mui/icons-material/Check";
 import { useTheme } from "@mui/material/styles";
 import NoCrashIcon from '@mui/icons-material/NoCrash';
 import { motion } from "framer-motion";
 import Grid from "@mui/material/Grid";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import EngineeringIcon from "@mui/icons-material/Engineering";
-import DesignServicesIcon from "@mui/icons-material/DesignServices";
-import ArchitectureIcon from "@mui/icons-material/Architecture";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -22,6 +15,7 @@ import withLoading from "../components/withLoading"; // Import HOC
 import { useTranslation } from "react-i18next";
 import Section from "../components/AnimationFunc";
 import { Link } from "react-router-dom";
+import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 
 const carData: { [key: string]: string[] } = {
   renault: ["Renault Clio", "Renault Megane", "Renault Captur"],
@@ -29,6 +23,15 @@ const carData: { [key: string]: string[] } = {
   bmw: ["BMW 3 Series", "BMW X5"],
   toyota: ["Toyota Corolla", "Toyota Yaris"],
 };
+
+const images = [
+  "/src/assets/homepage/main.jpg",
+  "/src/assets/homepage/main1.jpg",
+  "/src/assets/homepage/main2.jpg",
+  "/src/assets/homepage/main3.jpg",
+  "/src/assets/homepage/main4.jpg",
+  "/src/assets/homepage/main5.jpg",
+];
 
 const HomeEngineering: React.FC = () => {
   const { t } = useTranslation();
@@ -55,6 +58,8 @@ const HomeEngineering: React.FC = () => {
       },
     ],
   };
+
+
   const [selectedBrand, setSelectedBrand] = useState<string>("");
   const [selectedModel, setSelectedModel] = useState<string>("");
 
@@ -65,6 +70,62 @@ const HomeEngineering: React.FC = () => {
       const formattedModel = selectedModel.toLowerCase().replace(/\s+/g, "-");
       navigate(`/cekidemiri/${formattedBrand}/${formattedModel}`);
     }
+  };
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+  };
+
+  // Handle touch start
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  // Handle touch move
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  // Handle touch end (detect swipe direction)
+  const handleTouchEnd = () => {
+    if (touchStartX.current !== null && touchEndX.current !== null) {
+      const diff = touchStartX.current - touchEndX.current;
+
+      if (diff > 50) {
+        // Swiped left → Next Image
+        handleNext();
+      } else if (diff < -50) {
+        // Swiped right → Previous Image
+        handlePrev();
+      }
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
+  const [isDragging, setIsDragging] = useState(false); // Track if user is dragging
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    touchStartX.current = e.clientX;
+    setIsDragging(true); // Start dragging
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || touchStartX.current === null) return; // Only allow dragging if mouse is pressed
+    touchEndX.current = e.clientX;
+  };
+
+  const handleMouseUp = () => {
+    if (!isDragging) return;
+    setIsDragging(false); // Stop dragging
+    handleTouchEnd(); // Call the swipe function
   };
 
   return (
@@ -78,7 +139,7 @@ const HomeEngineering: React.FC = () => {
           margin: 0,
           overflowX: "hidden",
           backgroundColor: "#000",
-          backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url('/src/assets/background-t.jpg')`,
+          backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url('/src/assets/background.jpg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -91,16 +152,16 @@ const HomeEngineering: React.FC = () => {
           style={{ width: "100%" }}
         >
           <Box
-          sx={{
-            marginTop: 5,
-            display: "flex",
-            flexDirection: { xs: "column", md: "row" },
-            alignItems: "center",
-            justifyContent: "center",
-            height: "100%",
-            padding: "2rem",
-            color: "white",
-          }}
+            sx={{
+              marginTop: 5,
+              display: "flex",
+              flexDirection: { xs: "column", md: "row" },
+              alignItems: "center",
+              justifyContent: "center",
+              height: "100%",
+              padding: "2rem",
+              color: "white",
+            }}
           >
             {/* Left Section - Image */}
             <Box
@@ -111,11 +172,11 @@ const HomeEngineering: React.FC = () => {
                 alignItems: "center",
               }}
             >
-            <img
-              src="/src/assets/image1.jpg"
-              alt="Mechanic"
-              style={{ width: "80%", borderRadius: "8px" }}
-            />
+              <img
+                src="/src/assets/background2.jpg"
+                alt="Mechanic"
+                style={{ width: "80%", borderRadius: "8px" }}
+              />
             </Box>
 
             {/* Right Section - Text and Buttons */}
@@ -150,7 +211,7 @@ const HomeEngineering: React.FC = () => {
                       }}
                       style={{ display: "flex", alignItems: "center", gap: 8 }}
                     >
-                      <CheckIcon sx={{ color: "#FF6F00" }} />
+                      <CheckIcon sx={{ color: "#F9B233" }} />
                       <Typography variant="body1">{text}</Typography>
                     </motion.div>
                   )
@@ -162,7 +223,8 @@ const HomeEngineering: React.FC = () => {
                   to="/markalar"
                   variant="contained"
                   sx={{
-                    backgroundColor: "#FF6F00",
+                    backgroundColor: "#F9B233",
+                    color: "#000",
                     "&:hover": { backgroundColor: "#E65C00" },
                     width: { xs: "100%", sm: "auto" }, // Full width on mobile
                   }}
@@ -173,10 +235,10 @@ const HomeEngineering: React.FC = () => {
                   to="/cekidemiri"
                   variant="outlined"
                   sx={{
-                    borderColor: "#FF6F00",
-                    color: "#FF6F00",
-                    "&:hover": { borderColor: "#E65C00", color: "#E65C00" },
-                    width: { xs: "100%", sm: "auto" },
+                    backgroundColor: "#F9B233",
+                    color: "#000",
+                    "&:hover": { backgroundColor: "#E65C00" },
+                    width: { xs: "100%", sm: "auto" }, // Full width on mobile
                   }}
                 >
                   {t("engineering_first_button2")}
@@ -187,22 +249,30 @@ const HomeEngineering: React.FC = () => {
         </motion.div>
       </Box>
 
-
       {/* New Car Selection Section */}
       <Section>
-        <Box sx={{ py: 6, backgroundColor: "#f7f8fc", textAlign: "center" }}>
+        <Box sx={{ py: 6, backgroundColor: "#F5F5F5", textAlign: "center" }}>
           <Typography variant="h4" gutterBottom>
             {t("select_your_car")}
           </Typography>
-          <Box sx={{ display: "flex", justifyContent: "center", gap: 2, flexWrap: "wrap", mt: 3}}>
+          <Box sx={{ display: "flex", justifyContent: "center", gap: 2, flexWrap: "wrap", mt: 3 }}>
+
             {/* Brand Selection */}
-            <FormControl sx={{ minWidth: 200 }}>
-              <InputLabel variant="filled">{t("select_brand")}</InputLabel>
+            <FormControl sx={{ minWidth: 200 }} variant="filled">
+              <InputLabel sx={{ color: "#F9B233" }}>{t("select_brand")}</InputLabel>
               <Select
                 value={selectedBrand}
                 onChange={(e) => {
                   setSelectedBrand(e.target.value);
                   setSelectedModel("");
+                }}
+                sx={{
+                  backgroundColor: "white",
+                  "& .MuiFilledInput-root": {
+                    borderColor: "#F9B233",
+                    "&:hover": { borderColor: "#F9B233" },
+                    "&.Mui-focused": { borderColor: "#F9B233" },
+                  },
                 }}
               >
                 {Object.keys(carData).map((brand) => (
@@ -214,11 +284,19 @@ const HomeEngineering: React.FC = () => {
             </FormControl>
 
             {/* Model Selection */}
-            <FormControl sx={{ minWidth: 200 }} disabled={!selectedBrand}>
-              <InputLabel variant="filled">{t("select_model")}</InputLabel>
+            <FormControl sx={{ minWidth: 200 }} disabled={!selectedBrand} variant="filled">
+              <InputLabel sx={{ color: "#F9B233" }}>{t("select_model")}</InputLabel>
               <Select
                 value={selectedModel}
                 onChange={(e) => setSelectedModel(e.target.value)}
+                sx={{
+                  backgroundColor: "white",
+                  "& .MuiFilledInput-root": {
+                    borderColor: "#F9B233",
+                    "&:hover": { borderColor: "#F9B233" },
+                    "&.Mui-focused": { borderColor: "#F9B233" },
+                  },
+                }}
               >
                 {selectedBrand &&
                   carData[selectedBrand].map((model) => (
@@ -232,7 +310,11 @@ const HomeEngineering: React.FC = () => {
             {/* Navigate Button */}
             <Button
               variant="contained"
-              color="primary"
+              sx={{
+                backgroundColor: "#F9B233",
+                color: "#000",
+                "&:hover": { backgroundColor: "#E65C00" },
+              }}
               disabled={!selectedBrand || !selectedModel}
               onClick={handleNavigate}
             >
@@ -241,6 +323,7 @@ const HomeEngineering: React.FC = () => {
           </Box>
         </Box>
       </Section>
+
 
       {/* About Section */}
       <Section>
@@ -418,45 +501,43 @@ const HomeEngineering: React.FC = () => {
                 {t("engineering_third_title3")}
               </Typography>
 
-              {/* Feature List */}
-              <List>
-                <ListItem disableGutters>
-                  <ListItemIcon sx={{ color: "#FF5733" }}>
-                    <EngineeringIcon />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={t("engineering_feature")}
-                    secondary={t("engineering_feature_text")}
-                    primaryTypographyProps={{ fontWeight: "bold" }}
-                    secondaryTypographyProps={{ color: "#fff" }}
+              {/* Slider Section */}
+              <Box
+                sx={{
+                  position: "relative",
+                  width: "100%",
+                  maxWidth: "500px",
+                  margin: "auto",
+                  overflow: "hidden",
+                  userSelect: "none", // Prevents unwanted text selection while dragging
+                }}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp}
+                onMouseLeave={handleMouseUp} // Ensures drag stops even if the cursor leaves the component
+              >
+                <img
+                  src={images[currentIndex]}
+                  alt={`Slide ${currentIndex + 1}`}
+                  style={{ width: "100%", borderRadius: "10px", objectFit: "cover", pointerEvents: "none" }}
+                />
+                <IconButton
+                  onClick={handlePrev}
+                  sx={{ position: "absolute", top: "50%", left: 10, transform: "translateY(-50%)", color: "black" }}
+                >
+                  <ArrowBackIos />
+                </IconButton>
+                <IconButton
+                  onClick={handleNext}
+                  sx={{ position: "absolute", top: "50%", right: 10, transform: "translateY(-50%)", color: "black" }}
+                >
+                  <ArrowForwardIos />
+                </IconButton>
+              </Box>
 
-                  />
-                </ListItem>
-
-                <ListItem disableGutters>
-                  <ListItemIcon sx={{ color: "#FF5733" }}>
-                    <DesignServicesIcon />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={t("engineering_feature2")}
-                    secondary={t("engineering_feature2_text")}
-                    primaryTypographyProps={{ fontWeight: "bold" }}
-                    secondaryTypographyProps={{ color: "#fff" }}
-                  />
-                </ListItem>
-
-                <ListItem disableGutters>
-                  <ListItemIcon sx={{ color: "#FF5733" }}>
-                    <ArchitectureIcon />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={t("engineering_feature3")}
-                    secondary={t("engineering_feature3_text")}
-                    primaryTypographyProps={{ fontWeight: "bold" }}
-                    secondaryTypographyProps={{ color: "#fff" }}
-                  />
-                </ListItem>
-              </List>
             </Grid>
           </Grid>
         </Box>
@@ -508,8 +589,14 @@ const HomeEngineering: React.FC = () => {
             },
             {
               image: "/src/assets/m3.jpg",
-              category: t("engineering_project_card2_category"),
-              title: t("engineering_project_card2_title"),
+              category: t("engineering_project_card3_category"),
+              title: t("engineering_project_card3_title"),
+
+            },
+            {
+              image: "/src/assets/m4.jpg",
+              category: t("engineering_project_card4_category"),
+              title: t("engineering_project_card4_title"),
 
             }].map((project, index) => (
               <Box

@@ -1,7 +1,8 @@
 import React from "react";
 import { Container, Typography, Box, Link, IconButton, Grid, Paper } from "@mui/material";
-import { LocationOn, Phone, Email } from "@mui/icons-material";
+import { LocationOn, Phone, Email, Phone as PhoneIcon } from "@mui/icons-material";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import FacebookIcon from "@mui/icons-material/Facebook";
 import withLoading from "../components/withLoading";
 import { useTranslation } from "react-i18next";
 import Section from "../components/AnimationFunc"; // Animation Wrapper
@@ -11,7 +12,7 @@ const Contact: React.FC = () => {
 
   return (
     <Section>
-      <Container sx={{ py: 6, textAlign: "center" }}>
+      <Container sx={{ py: 6, textAlign: "center", mt: 3, }}>
         {/* Page Title */}
         <Typography variant="h3" gutterBottom sx={{ color: "#333", fontWeight: "bold" }}>
           {t("contact_title")}
@@ -42,7 +43,10 @@ const Contact: React.FC = () => {
                 variant="h6"
                 sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 1, color: "#333" }}
               >
-                <Phone color="primary" /> (+90) 534 404 59 81
+                <Link href="tel:+905344045981" color="inherit" underline="hover">
+              <PhoneIcon fontSize="small" sx={{ mr: 1 }} />
+              (+90) 534 404 5981
+            </Link>
               </Typography>
               <Typography
                 variant="h6"
@@ -115,9 +119,26 @@ const Contact: React.FC = () => {
               width: 50,
               height: 50,
               borderRadius: "50%",
+              mr: 2,
             }}
           >
             <InstagramIcon fontSize="large" />
+          </IconButton>
+          <IconButton
+            component="a"
+            href="https://www.facebook.com/profile.php?id=100090676906052"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              color: "white",
+              backgroundColor: "#1877F2",
+              "&:hover": { backgroundColor: "#05387a" },
+              width: 50,
+              height: 50,
+              borderRadius: "50%",
+            }}
+          >
+            <FacebookIcon fontSize="large" />
           </IconButton>
         </Box>
       </Container>
