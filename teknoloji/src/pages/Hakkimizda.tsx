@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Carousel from "react-material-ui-carousel";
-import { Card, CardMedia, CardContent } from "@mui/material";
+import { Card, CardMedia } from "@mui/material";
 import withLoading from "../components/withLoading"; // Import HOC
 import { useTranslation } from "react-i18next";
 import Section from "../components/AnimationFunc";

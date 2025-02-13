@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Typography, Box, Link, IconButton, Grid, Paper } from "@mui/material";
-import { LocationOn, Phone, Email, Phone as PhoneIcon } from "@mui/icons-material";
+import { LocationOn, Email, Phone as PhoneIcon } from "@mui/icons-material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import withLoading from "../components/withLoading";

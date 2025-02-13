@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import { Button, MenuItem, Select, FormControl, InputLabel, IconButton } from "@mui/material"; import CheckIcon from "@mui/icons-material/Check";
 import { useTheme } from "@mui/material/styles";
-import NoCrashIcon from '@mui/icons-material/NoCrash';
 import { motion } from "framer-motion";
 import Grid from "@mui/material/Grid";
 import Slider from "react-slick";
@@ -16,12 +15,43 @@ import { useTranslation } from "react-i18next";
 import Section from "../components/AnimationFunc";
 import { Link } from "react-router-dom";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+import EngineeringIcon from '@mui/icons-material/Engineering';
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import BuildIcon from "@mui/icons-material/Build";
+import SettingsSuggestIcon from "@mui/icons-material/SettingsSuggest";
 
 const carData: { [key: string]: string[] } = {
-  renault: ["Renault Clio", "Renault Megane", "Renault Captur"],
-  audi: ["Audi A3", "Audi A4"],
-  bmw: ["BMW 3 Series", "BMW X5"],
-  toyota: ["Toyota Corolla", "Toyota Yaris"],
+  renault: ["Renault Clio", "Renault Megane", "Renault Captur", "Renault 12", "Renault Kadjar", "Renault Kangoo", "Renault Scenic", "Renault Symbol", "Renault Europa", "Renault Laguna", "Renault Trafic"],
+  chevrolet: ["Chevrolet Aveo", "Chevrolet Captiva"],
+  audi: ["Audi Q5"],
+  skoda: ["Skoda Octavia"],
+  ssangyong: ["Ssangyong Rodius"],
+  subaru: ["Subaru Forester"],
+  suzuki: ["Suzuki Grand", "Suzuki Scross"],
+  tesla: ["Tesla Modely"],
+  volkswagen: ["Volkswagen Amarok", "Volkswagen Caddy", "Volkswagen Caravelle", "Volkswagen Passat", "Volkswagen Tiguan", "Volkswagen Troc", "Volkswagen Volt"],
+  volvo: ["Volvo Xc40"],
+  landrover: ["Landrover Defender", "Landrover Freelander"],
+  mazda: ["Mazda 626"],
+  mercedes: ["Mercedes Viano"],
+  mitsubishi: ["Mitsubishi Eclipse"],
+  nissan: ["Nissan Juke", "Nissan Qashqai"],
+  opel: ["Opel Astra", "Opel Combo", "Opel Vectra"],
+  peugeot: ["Peugeot 206", "Peugeot 3008", "Peugeot Rifter"],
+  seat: ["Seat Ateca"],
+  lada: ["Lada Niva"],
+  kia: ["Kia Stonic"],
+  jeep: ["Jeep Crd"],
+  isuzu: ["Isuzu Dmax"],
+  hyundai: ["Hyundai Bayon", "Hyundai Ix35", "Hyundai Tucson"],
+  honda: ["Honda Civic", "Honda Crv"],
+  ford: ["Ford Connect", "Ford Focus", "Ford Kuga", "Ford Tourneo", "Ford Ranger"],
+  fiat: ["Fiat Egea", "Fiat Doblo", "Fiat Fiorino", "Fiat Ducato", "Fiat Linea", "Fiat Marea", "Fiat Freemont", "Fiat Palio", "Fiat Punto", "Fiat Tempra"],
+  tofas: ["Tofas Sahin"],
+  citroen: ["Citroen Berlingo", "Citroen C3", "Citroen C4"],
+  dacia: ["Dacia Dokker", "Dacia Jogger", "Dacia Sandero", "Dacia Duster", "Dacia Logan", "Dacia Lodgy"],
+  toyota: ["Toyota Corolla", "Toyota Hilux", "Toyota Proace"],
+  bmw: ["BMW X3"],
 };
 
 const images = [
@@ -36,7 +66,6 @@ const images = [
 const HomeEngineering: React.FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const theme = useTheme(); // Access the theme to get colors
   const settings = {
     dots: true,
     infinite: true,
@@ -164,7 +193,7 @@ const HomeEngineering: React.FC = () => {
             }}
           >
             {/* Left Section - Image */}
-            <Box
+            {/* <Box
               sx={{
                 flex: 1,
                 display: "flex",
@@ -175,6 +204,23 @@ const HomeEngineering: React.FC = () => {
               <img
                 src="/src/assets/background2.jpg"
                 alt="Mechanic"
+                style={{ width: "80%", borderRadius: "8px" }}
+              />
+            </Box> */}
+
+            <Box
+              sx={{
+                flex: 1,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <video
+                src="video2.mp4"
+                autoPlay
+                loop
+                muted
                 style={{ width: "80%", borderRadius: "8px" }}
               />
             </Box>
@@ -189,10 +235,10 @@ const HomeEngineering: React.FC = () => {
                 alignItems: "left",
                 justifyContent: "center",
                 gap: 2,
-                textAlign: { xs: "center", md: "left" },
+                textAlign: { xs: "left", md: "left" },
               }}
             >
-              <Typography variant="h3" fontWeight="bold" sx={{ fontSize: { xs: "2rem", md: "3rem" } }}>
+              <Typography variant="h3" fontWeight="bold" sx={{ fontSize: { xs: "2rem", md: "3rem" }, textAlign: {xs: "center", md: "left"} }}>
                 {t("engineering_first_title")} <br />
                 {t("engineering_first_title2")}
               </Typography>
@@ -331,17 +377,27 @@ const HomeEngineering: React.FC = () => {
           sx={{
             padding: { xs: "2rem 1rem", md: "4rem 2rem" },
             textAlign: "center",
-            background: "linear-gradient(0deg, #545454 5%,#e6e5e1 50%)",
-            color: "#000",
+            background: "linear-gradient(180deg, #333333 5%, #1A1A1A 50%)",
+            color: "#FFFFFF",
           }}
         >
-          <Typography variant="h6" color="orange" gutterBottom>
+          <Typography variant="h6" color="#D4AF37" gutterBottom>
             {t("engineering_about_title")}
           </Typography>
 
           {/* Main heading */}
-          <Typography variant="h4" component="h1" fontWeight="bold" gutterBottom>
-            {t("engineering_about_title2")} <span style={{ fontWeight: 800 }}>{t("engineering_about_title2_1")}</span> {t("engineering_about_title2_2")}
+          <Typography
+            variant="h4"
+            component="h1"
+            fontWeight="bold"
+            gutterBottom
+            sx={{ color: "#FFFFFF" }}
+          >
+            {t("engineering_about_title2")}{" "}
+            <span style={{ fontWeight: 800, color: "#D4AF37" }}>
+              {t("engineering_about_title2_1")}
+            </span>{" "}
+            {t("engineering_about_title2_2")}
           </Typography>
 
           {/* Card Container */}
@@ -350,7 +406,7 @@ const HomeEngineering: React.FC = () => {
               display: "flex",
               justifyContent: "center",
               flexWrap: "wrap",
-              gap: 3, // Adjusts spacing dynamically
+              gap: 3,
               maxWidth: "1200px",
               margin: "0 auto",
             }}
@@ -360,47 +416,51 @@ const HomeEngineering: React.FC = () => {
                 title: `${t("engineering_cards1_title")}`,
                 description: `${t("engineering_cards1_description")}`,
                 action: `${t("engineering_cards_button")}`,
+                icon: <EngineeringIcon fontSize="inherit" />,
               },
               {
                 title: `${t("engineering_cards2_title")}`,
                 description: `${t("engineering_cards2_description")}`,
                 action: `${t("engineering_cards_button")}`,
+                icon: <BuildIcon fontSize="inherit" />,
               },
               {
                 title: `${t("engineering_cards3_title")}`,
                 description: `${t("engineering_cards3_description")}`,
                 action: `${t("engineering_cards_button")}`,
+                icon: <SettingsSuggestIcon fontSize="inherit" />,
               },
             ].map((card, index) => (
               <Box
                 key={index}
                 sx={{
-                  flex: "1 1 100%", // Full width on mobile
-                  minWidth: "280px", // Prevents breaking on small screens
+                  flex: "1 1 100%",
+                  minWidth: "280px",
                   maxWidth: { xs: "100%", sm: "calc(50% - 1rem)", md: "calc(33.333% - 1rem)" },
                   padding: "2rem",
                   borderRadius: "16px",
-                  backgroundColor: "#0B1727",
-                  color: "#000",
-                  boxShadow: "0 6px 20px rgba(0, 0, 0, 0.15)",
+                  backgroundColor: "#222222",
+                  border: "2px solid #D4AF37",
+                  color: "#FFFFFF",
+                  boxShadow: "0 6px 20px rgba(212, 175, 55, 0.15)",
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
                   "&:hover": {
                     transform: "translateY(-10px)",
-                    boxShadow: "0 8px 25px rgba(0, 0, 0, 0.2)",
+                    boxShadow: "0 8px 25px rgba(212, 175, 55, 0.25)",
                   },
                   textAlign: "center",
-                  overflow: "hidden", // Prevents content overflow
+                  overflow: "hidden",
                 }}
               >
-                {/* Icon */}
+                {/* Icon - Different for Each Card */}
                 <Box
                   sx={{
                     fontSize: "3rem",
-                    color: "#F0F8FF",
+                    color: "#D4AF37",
                     marginBottom: "1rem",
                   }}
                 >
-                  <NoCrashIcon fontSize="inherit" />
+                  {card.icon}
                 </Box>
 
                 {/* Title */}
@@ -408,9 +468,7 @@ const HomeEngineering: React.FC = () => {
                   variant="h6"
                   fontWeight="bold"
                   mb={2}
-                  sx={{
-                    color: "#F0F8FF",
-                  }}
+                  sx={{ color: "#D4AF37" }}
                 >
                   {card.title}
                 </Typography>
@@ -419,38 +477,44 @@ const HomeEngineering: React.FC = () => {
                 <Typography
                   variant="body2"
                   mb={3}
-                  sx={{
-                    color: "#F0F8FF",
-                  }}
+                  sx={{ color: "#F0F0F0" }}
                 >
                   {card.description}
                 </Typography>
 
-                {/* Action Button */}
-                <Button
-                  variant="contained"
-                  sx={{
-                    backgroundColor: "#F0F8FF",
-                    color: "#000",
-                    textTransform: "none",
-                    "&:hover": {
-                      backgroundColor: theme.palette.primary.dark,
-                    },
-                  }}
-                >
-                  {card.action}
-                </Button>
+                {/* Button Wrapper - Centered */}
+                <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      backgroundColor: "#D4AF37",
+                      color: "#000000",
+                      textTransform: "none",
+                      fontWeight: "bold",
+                      borderRadius: "8px",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px",
+                      "&:hover": {
+                        backgroundColor: "#B8972D",
+                      },
+                    }}
+                    onClick={() => window.open("https://wa.me/905344045981", "_blank")}
+                  >
+                    <WhatsAppIcon />
+                    {card.action}
+                  </Button>
+                </Box>
               </Box>
             ))}
           </Box>
         </Box>
       </Section>
-
       {/* Third Section */}
       <Section>
         <Box
           sx={{
-            backgroundColor: "#0B1727",
+            background: "linear-gradient(180deg, #333333 5%, #1A1A1A 50%)",
             color: "#FFFFFF",
             padding: "4rem 2rem",
           }}
@@ -483,7 +547,7 @@ const HomeEngineering: React.FC = () => {
             <Grid item xs={12} md={6}>
               <Typography
                 variant="overline"
-                color="error"
+                color="#D4AF37"
                 gutterBottom
                 sx={{ fontSize: "0.875rem" }}
               >
@@ -495,7 +559,7 @@ const HomeEngineering: React.FC = () => {
                 fontWeight="bold"
                 gutterBottom
               >
-                {t("engineering_third_title2")}<span style={{ color: "#FF5733" }}> {t("engineering_third_title2_1")}</span> {t("engineering_third_title2_2")}<span style={{ color: "#FF5733" }}> {t("engineering_third_title2_3")}</span>
+                {t("engineering_third_title2")}<span style={{ color: "#D4AF37" }}> {t("engineering_third_title2_1")}</span> {t("engineering_third_title2_2")}<span style={{ color: "#D4AF37" }}> {t("engineering_third_title2_3")}</span>
               </Typography>
               <Typography variant="body1" color="grey" paragraph>
                 {t("engineering_third_title3")}
@@ -549,7 +613,7 @@ const HomeEngineering: React.FC = () => {
 
         <Box
           sx={{
-            background: "linear-gradient(to bottom, #0B1727 80%, #FFFFFF 20%)",
+            background: "linear-gradient(to bottom, #1A1A1A 80%, #FFFFFF 20%)",
             color: "#FFFFFF",
             padding: "4rem 2rem",
             position: "relative",
@@ -558,7 +622,7 @@ const HomeEngineering: React.FC = () => {
           <Box sx={{ textAlign: "center", marginBottom: "2rem" }}>
             <Typography
               variant="h6"
-              color="orange"
+              color="#D4AF37"
               gutterBottom
               sx={{ textTransform: "uppercase" }}
             >
@@ -570,7 +634,7 @@ const HomeEngineering: React.FC = () => {
               fontWeight="bold"
               gutterBottom
             >
-              <span style={{ color: "#FF6F00" }}>{t("engineering_projects_title2")}</span> {t("engineering_projects_title2_1")}
+              <span style={{ color: "#B8972D" }}>{t("engineering_projects_title2")}</span> {t("engineering_projects_title2_1")}
             </Typography>
           </Box>
 

@@ -3,144 +3,150 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Container, Grid, Card, CardMedia, Typography, Box } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-// Sample car models for each brand
+
 const carModels: { [key: string]: { name: string; src: string }[] } = {
   renault: [
-    { name: "Renault Clio", src: "/models/clio.jpg" },
-    { name: "Renault Megane", src: "/models/megane.jpg" },
-    { name: "Renault Captur", src: "/models/captur.jpg" },
-    { name: "Renault 12", src: "/models/clio.jpg" },
-    { name: "Renault Kadjar", src: "/models/megane.jpg" },
-    { name: "Renault Kangoo", src: "/models/captur.jpg" },
-    { name: "Renault Scenic", src: "/models/clio.jpg" },
-    { name: "Renault Symbol", src: "/models/megane.jpg" },
-    { name: "Renault Europa", src: "/models/megane.jpg" },
-    { name: "Renault Laguna", src: "/models/megane.jpg" },
-    { name: "Renault Trafic", src: "/models/megane.jpg" },
+    { name: "Renault Clio", src: "/covers/reno_clio.png" },
+    { name: "Renault Megane", src: "/covers/reno_megane.png" },
+    { name: "Renault Captur", src: "/covers/reno_captur.png" },
+    { name: "Renault 12", src: "/covers/reno_12.png" },
+    { name: "Renault Kadjar", src: "/covers/reno_kadjar.png" },
+    { name: "Renault Kangoo", src: "/covers/reno_kangoo.png" },
+    { name: "Renault Scenic", src: "/covers/reno_scenic.png" },
+    { name: "Renault Symbol", src: "/covers/reno_symbol.png" },
+    { name: "Renault Europa", src: "/covers/reno_europa.png" },
+    { name: "Renault Laguna", src: "/covers/reno_laguna.png" },
+    { name: "Renault Trafic", src: "/covers/reno_trafic.png" },
   ],
   chevrolet: [ 
-    { name: "Chevrolet Aveo", src: "/models/aveo.jpg" },
-    { name: "Chevrolet Captiva", src: "/models/aveo.jpg" },
+    { name: "Chevrolet Aveo", src: "/covers/chev_aveo.png" },
+    { name: "Chevrolet Captiva", src: "/covers/chev_captiva.png" },
   ],
   audi: [
-    { name: "Audi Q5", src: "/models/audi-a3.png" },
+    { name: "Audi Q5", src: "/covers/audi_q5.png" },
   ],
   skoda: [
-    { name: "Skoda Octavia", src: "/models/audi-a3.png" },
+    { name: "Skoda Octavia", src: "/covers/scoda_octavia.png" },
   ],
-  ssanyong: [
-    { name: "Ssanyong Rode", src: "/models/audi-a3.png" },
+  ssangyong: [
+    { name: "Ssangyong Rodius", src: "/covers/ssang_rodius.png" },
   ],
   subaru: [
-    { name: "Subaru Forester", src: "/models/audi-a3.png" },
+    { name: "Subaru Forester", src: "/covers/subaru_forester.png" },
   ],
   suzuki: [
-    { name: "Suzuki Grand", src: "/models/audi-a3.png" },
-    { name: "Suzuki Scross", src: "/models/audi-a3.png" },
+    { name: "Suzuki Grand", src: "/covers/suzuki_grand.png" },
+    { name: "Suzuki Scross", src: "/covers/suzuki_scross.png" },
   ],
   tesla: [
-    { name: "Tesla Modely", src: "/models/audi-a3.png" },
+    { name: "Tesla Modely", src: "/covers/tesla_modely.png" },
   ],
   volkswagen: [
-    { name: "Volkswagen Amarok", src: "/models/audi-a3.png" },
-    { name: "Volkswagen Caddy", src: "/models/audi-a3.png" },
-    { name: "Volkswagen Carevella", src: "/models/audi-a3.png" },
-    { name: "Volkswagen Passat", src: "/models/audi-a3.png" },
-    { name: "Volkswagen Tiguan", src: "/models/audi-a3.png" },
-    { name: "Volkswagen Troc", src: "/models/audi-a3.png" },
-    { name: "Volkswagen Volt", src: "/models/audi-a3.png" },
+    { name: "Volkswagen Amarok", src: "/covers/volks_amarok.png" },
+    { name: "Volkswagen Caddy", src: "/covers/volks_caddy.png" },
+    { name: "Volkswagen Caravelle", src: "/covers/volks_caravelle.png" },
+    { name: "Volkswagen Passat", src: "/covers/volks_passat.png" },
+    { name: "Volkswagen Tiguan", src: "/covers/volks_tiguan.png" },
+    { name: "Volkswagen Troc", src: "/covers/volks_troc.png" },
+    { name: "Volkswagen Volt", src: "/covers/volks_volt.png" },
   ],
   volvo: [
-    { name: "Volvo Xc40", src: "/models/audi-a3.png" },
+    { name: "Volvo Xc40", src: "/covers/volvo_xc40.png" },
   ],
   landrover: [
-    { name: "Landrover Defender", src: "/models/audi-a3.png" },
-    { name: "Landrover Freelander", src: "/models/audi-a3.png" },
+    { name: "Landrover Defender", src: "/covers/landrover_defender.png" },
+    { name: "Landrover Freelander", src: "/covers/landrover_freelander.png" },
   ],
   mazda: [
-    { name: "Mazda 626", src: "/models/audi-a3.png" },
+    { name: "Mazda 626", src: "/covers/mazda_626.png" },
+  ],
+  mercedes: [
+    { name: "Mercedes Viano", src: "/covers/mercedes_viano.png" },
   ],
   mitsubishi: [
-    { name: "Mitsubishi Eclipse", src: "/models/audi-a3.png" },
+    { name: "Mitsubishi Eclipse", src: "/covers/mitsubishi_eclipse.png" },
   ],
   nissan: [
-    { name: "Nissan Juke", src: "/models/audi-a3.png" },
-    { name: "Nissan Qashqai", src: "/models/audi-a3.png" },
+    { name: "Nissan Juke", src: "/covers/nissan_juke.png" },
+    { name: "Nissan Qashqai", src: "/covers/nissan_qashqai.png" },
   ],
   opel: [
-    { name: "Opel Astra", src: "/models/audi-a3.png" },
-    { name: "Opel Combo", src: "/models/audi-a3.png" },
-    { name: "Opel Vecta", src: "/models/audi-a3.png" },
+    { name: "Opel Astra", src: "/covers/opel_astra.png" },
+    { name: "Opel Combo", src: "/covers/opel_combo.png" },
+    { name: "Opel Vectra", src: "/covers/opel_vectra.png" },
   ],
   peugeot: [
-    { name: "Peugeot 206", src: "/models/audi-a3.png" },
-    { name: "Peugeot 3008", src: "/models/audi-a3.png" },
-    { name: "Peugeot Rifter", src: "/models/audi-a3.png" },
+    { name: "Peugeot 206", src: "/covers/peugeot_206.png" },
+    { name: "Peugeot 3008", src: "/covers/peugeot_3008.png" },
+    { name: "Peugeot Rifter", src: "/covers/peugeot_rifter.png" },
   ],
   seat: [
-    { name: "Seat Ateca", src: "/models/audi-a3.png" },
+    { name: "Seat Ateca", src: "/covers/seat_ateca.png" },
   ],
   lada: [
-    { name: "Lada Niva", src: "/models/audi-a3.png" },
+    { name: "Lada Niva", src: "/covers/lada_niva.png" },
   ],
   kia: [
-    { name: "Kia Stonic", src: "/models/audi-a3.png" },
+    { name: "Kia Stonic", src: "/covers/kia_stonic.png" },
   ],
   jeep: [
-    { name: "Jeep Crd", src: "/models/audi-a3.png" },
+    { name: "Jeep Crd", src: "/covers/jeep_crd.png" },
   ],
   isuzu: [
-    { name: "Isuzu Dmax", src: "/models/audi-a3.png" },
+    { name: "Isuzu Dmax", src: "/covers/isuzu_dmax.png" },
   ],
   hyundai: [
-    { name: "Hyundai Bayon", src: "/models/audi-a3.png" },
-    { name: "Hyundai Ix35", src: "/models/audi-a3.png" },
-    { name: "Hyundai Tucson", src: "/models/audi-a3.png" },
+    { name: "Hyundai Bayon", src: "/covers/hyundai_bayon.png" },
+    { name: "Hyundai Ix35", src: "/covers/hyundai_ix35.png" },
+    { name: "Hyundai Tucson", src: "/covers/hyundai_tucson.png" },
   ],
   honda: [
-    { name: "Honda Civic", src: "/models/audi-a3.png" },
-    { name: "Honda Crv", src: "/models/audi-a3.png" },
+    { name: "Honda Civic", src: "/covers/honda_civic.png" },
+    { name: "Honda Crv", src: "/covers/honda_crv.png" },
   ],
   ford: [
-    { name: "Ford Connect", src: "/models/audi-a3.png" },
-    { name: "Ford Focus", src: "/models/audi-a3.png" },
-    { name: "Ford Kuga", src: "/models/audi-a3.png" },
-    { name: "Ford Ranger", src: "/models/audi-a3.png" },
-    { name: "Ford Tourneo", src: "/models/audi-a3.png" },
+    { name: "Ford Connect", src: "/covers/ford_connect.png" },
+    { name: "Ford Focus", src: "/covers/ford_focus.png" },
+    { name: "Ford Kuga", src: "/covers/ford_kuga.png" },
+    { name: "Ford Ranger", src: "/covers/ford_ranger.png" },
+    { name: "Ford Tourneo", src: "/covers/ford_tourneo.png" },
   ],
   fiat: [
-    { name: "Fiat Cross", src: "/models/audi-a3.png" },
-    { name: "Fiat Doblo", src: "/models/audi-a3.png" },
-    { name: "Fiat Ducato", src: "/models/audi-a3.png" },
-    { name: "Fiat Fiorino", src: "/models/audi-a3.png" },
-    { name: "Fiat Linea", src: "/models/audi-a3.png" },
-    { name: "Fiat Marea", src: "/models/audi-a3.png" },
-    { name: "Fiat Freemont", src: "/models/audi-a3.png" },
-    { name: "Fiat Palio", src: "/models/audi-a3.png" },
-    { name: "Fiat Punto", src: "/models/audi-a3.png" },
-    { name: "Fiat Sahin", src: "/models/audi-a3.png" },
-    { name: "Fiat Tempra", src: "/models/audi-a3.png" },
+    { name: "Fiat Egea", src: "/covers/fiat_egea.png" },
+    { name: "Fiat Doblo", src: "/covers/fiat_doblo.png" },
+    { name: "Fiat Ducato", src: "/covers/fiat_ducato.png" },
+    { name: "Fiat Fiorino", src: "/covers/fiat_fiorino.png" },
+    { name: "Fiat Linea", src: "/covers/fiat_linea.png" },
+    { name: "Fiat Marea", src: "/covers/fiat_marea.png" },
+    { name: "Fiat Freemont", src: "/covers/fiat_freemont.png" },
+    { name: "Fiat Palio", src: "/covers/fiat_palio.png" },
+    { name: "Fiat Punto", src: "/covers/fiat_punto.png" },
+    { name: "Fiat Tempra", src: "/covers/fiat_tempra.png" },
+  ],
+  tofas: [
+    { name: "Tofas Sahin", src: "/covers/tofas_sahin.png" },
   ],
   citroen: [
-    { name: "Citroen Berlingo", src: "/models/audi-a3.png" },
-    { name: "Citroen C3", src: "/models/audi-a3.png" },
-    { name: "Citroen C4", src: "/models/audi-a3.png" },
+    { name: "Citroen Berlingo", src: "/covers/citroen_berlingo.png" },
+    { name: "Citroen C3", src: "/covers/citroen_c3.png" },
+    { name: "Citroen C4", src: "/covers/citroen_c4.png" },
   ],
   dacia: [
-    { name: "Dacia Dokker", src: "/models/audi-a3.png" },
-    { name: "Dacia Jogger", src: "/models/audi-a3.png" },
-    { name: "Dacia Lodgy", src: "/models/audi-a3.png" },
-    { name: "Dacia Logan", src: "/models/audi-a3.png" },
-    { name: "Dacia Sandero", src: "/models/audi-a3.png" },
+    { name: "Dacia Dokker", src: "/covers/dacia_dokker.png" },
+    { name: "Dacia Jogger", src: "/covers/dacia_jogger.png" },
+    { name: "Dacia Lodgy", src: "/covers/dacia_lodgy.png" },
+    { name: "Dacia Logan", src: "/covers/dacia_logan.png" },
+    { name: "Dacia Sandero", src: "/covers/dacia_sandero.png" },
+    { name: "Dacia Duster", src: "/covers/dacia_duster.png" },
   ],
   
   bmw: [
-    { name: "BMW X3", src: "/models/bmw-x3.jpg" },
+    { name: "BMW X3", src: "/covers/bmw_x3.png" },
   ],
   toyota: [
-    { name: "Toyota Corolla", src: "/models/corolla.jpg" },
-    { name: "Toyota Hilux", src: "/models/yaris.jpg" },
-    { name: "Toyota Proace", src: "/models/yaris.jpg" },
+    { name: "Toyota Corolla", src: "/covers/toyota_corolla.png" },
+    { name: "Toyota Hilux", src: "/covers/toyota_hilux.png" },
+    { name: "Toyota Proace", src: "/covers/toyota_proace.png" },
   ],
 };
 
@@ -155,7 +161,7 @@ const BrandPage: React.FC = () => {
   };
 
   return (
-    <Container sx={{ py: 6, mt: 2 }}>
+    <Container sx={{ py: 6, mt: 2, color: "black" }}>
       <Typography variant="h4" textAlign="center" gutterBottom>
         {brandName?.toUpperCase()} {t("brandpage_text")}
       </Typography>
@@ -172,9 +178,9 @@ const BrandPage: React.FC = () => {
                   background: "radial-gradient(circle at center, rgba(238, 231, 231, 0.1), rgba(83, 82, 82, 0.9))",
                   borderRadius: 3,
                   padding: 2,
-                  boxShadow: "0px 10px 30px rgba(255, 255, 255, 0.5), 0px 5px 15px rgba(0, 0, 0, 0.7)", // Glow effect
+                  boxShadow: "0px 10px 30px rgba(255, 255, 255, 0.5), 0px 5px 15px rgba(0, 0, 0, 0.7)",
                   transition: "transform 0.3s ease-in-out",
-                  "&:hover": { transform: "scale(1.05)", boxShadow: "0px 15px 40px rgba(96, 89, 89, 0.8)" }, // Intense glow on hover
+                  "&:hover": { transform: "scale(1.05)", boxShadow: "0px 15px 40px rgba(96, 89, 89, 0.8)" },
                 }}
               >
                 <Card
@@ -182,6 +188,13 @@ const BrandPage: React.FC = () => {
                     background: "none",
                     boxShadow: "none",
                     cursor: "pointer",
+                    width: "100%", // Ensure it takes full width
+                    maxWidth: 250, // Limit max width for uniformity
+                    height: 300, // Fixed height for uniformity
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
                   }}
                   onClick={() => handleModelClick(model.name.toLowerCase().replace(/\s+/g, "-"))}
                 >
@@ -190,7 +203,8 @@ const BrandPage: React.FC = () => {
                     image={model.src}
                     alt={model.name}
                     sx={{
-                      width: "100%",
+                      width: "100%", 
+                      height: "200px", // Fixed image height
                       objectFit: "contain",
                       borderRadius: 3,
                     }}
@@ -203,8 +217,8 @@ const BrandPage: React.FC = () => {
             </Grid>
           ))
         ) : (
-          <Typography textAlign="center" sx={{ mt: 4, color: "white" }}>
-            No models available for this brand.
+          <Typography textAlign="center" sx={{ mt: 4, color: "black" }}>
+            {t("brandpage_notfound")}
           </Typography>
         )}
       </Grid>
@@ -213,3 +227,4 @@ const BrandPage: React.FC = () => {
 };
 
 export default BrandPage;
+

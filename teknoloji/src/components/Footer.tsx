@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
     <Box
       component="footer"
       sx={{
-        backgroundColor: "#0B1727",
+        backgroundColor: "#1A1A1A",
         color: "white",
         py: 4,
         px: 2,
@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
       <Grid container spacing={3} justifyContent="space-between">
         {/* Left Section - Navigation Links */}
         <Grid item xs={12} sm={4} md={3} sx={{ textAlign: "center" }}>
-          <Typography variant="h6" sx={{ mb: 2, color: "#FF6F00" }}>
+          <Typography variant="h6" sx={{ mb: 2, color: "#F9B233" }}>
             {t("footer_title1")}
           </Typography>
           <Typography>
@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
 
         {/* Middle Section - Contact Info */}
         <Grid item xs={12} sm={4} md={4} sx={{ textAlign: "center" }}>
-          <Typography variant="h6" sx={{ mb: 2, color: "#FF6F00" }}>
+          <Typography variant="h6" sx={{ mb: 2, color: "#F9B233" }}>
             {t("footer_title2")}
           </Typography>
           <Typography>
@@ -68,7 +68,7 @@ const Footer: React.FC = () => {
 
         {/* Right Section - Social Media Icons */}
         <Grid item xs={12} sm={4} md={3} sx={{ textAlign: "center" }}>
-          <Typography variant="h6" sx={{ mb: 2, color: "#FF6F00" }}>
+          <Typography variant="h6" sx={{ mb: 2, color: "#F9B233" }}>
             {t("footer_title3")}
           </Typography>
           <IconButton

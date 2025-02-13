@@ -14,12 +14,11 @@ import {
   ListItem,
   ListItemText,
 } from "@mui/material";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Email,
   Phone,
   CalendarToday,
-  ArrowDropDown,
   Menu as MenuIcon,
   Close as CloseIcon,
 } from "@mui/icons-material";
@@ -27,13 +26,12 @@ import { useTranslation } from "react-i18next";
 import { GB, TR } from "country-flag-icons/react/3x2";
 import { useTheme, useMediaQuery } from "@mui/material";
 
+
 const Header: React.FC = () => {
   const { t, i18n } = useTranslation(); // Import translations
-  const location = useLocation();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [languageAnchorEl, setLanguageAnchorEl] = useState<null | HTMLElement>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -46,14 +44,6 @@ const Header: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   const handleLanguageMenuClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setLanguageAnchorEl(event.currentTarget);
@@ -164,25 +154,74 @@ const Header: React.FC = () => {
         >
           <Toolbar sx={{ justifyContent: "space-between", padding: "0 2rem" }}>
             <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-              <Button color="inherit" component={Link} to="/">
+              <Button
+                color="inherit"
+                component={Link}
+                to="/"
+                sx={{
+                  transition: "color 0.3s ease-in-out",
+                  "&:hover": {
+                    color: "#D4AF37",
+                  },
+                }}
+              >
                 {t("home")}
               </Button>
-              <Button color="inherit" component={Link} to="/hakkimizda">
-                {t("hakkimizda")}
+              <Button
+                color="inherit"
+                component={Link}
+                to="/hakkimizda"
+                sx={{
+                  transition: "color 0.3s ease-in-out",
+                  "&:hover": {
+                    color: "#D4AF37",
+                  },
+                }}
+              >
+                {t("about_us")}
               </Button>
-              <Button color="inherit" component={Link} to="/contact">
+              <Button
+                color="inherit"
+                component={Link}
+                to="/contact"
+                sx={{
+                  transition: "color 0.3s ease-in-out",
+                  "&:hover": {
+                    color: "#D4AF37",
+                  },
+                }}
+              >
                 {t("contact")}
               </Button>
-              <Button color="inherit" component={Link} to="/cekidemiri">
+              <Button
+                color="inherit"
+                component={Link}
+                to="/cekidemiri"
+                sx={{
+                  transition: "color 0.3s ease-in-out",
+                  "&:hover": {
+                    color: "#D4AF37",
+                  },
+                }}
+              >
                 {t("cekidemiri")}
               </Button>
-              <Button color="inherit" component={Link} to="/markalar">
-              {t("markalar")}
+              <Button
+                color="inherit"
+                component={Link}
+                to="/markalar"
+                sx={{
+                  transition: "color 0.3s ease-in-out",
+                  "&:hover": {
+                    color: "#D4AF37",
+                  },
+                }}
+              >
+                {t("markalar")}
               </Button>
             </Box>
-
             <Button
-              variant="outlined"
+              variant="text"
               onClick={handleLanguageMenuClick}
               sx={{
                 color: "#fff",
@@ -263,58 +302,80 @@ const Header: React.FC = () => {
         </Button>
 
         {/* Drawer Component */}
-        <Drawer
-          anchor="left"
-          open={drawerOpen}
-          onClose={toggleDrawer(false)}
-          PaperProps={{
-            sx: { backgroundColor: "#1E1E1E", color: "white" }, // Background color
+{/* Drawer Component */}
+<Drawer
+  anchor="left"
+  open={drawerOpen}
+  onClose={toggleDrawer(false)}
+  PaperProps={{
+    sx: { backgroundColor: "#1E1E1E", color: "white" }, // Background color
+  }}
+>
+  <Box sx={{ width: 250, padding: 2 }} role="presentation">
+    {/* Close Icon, Mini Logo & "TEKNOLOJİ" Title */}
+    <Box sx={{ display: "flex", alignItems: "center", marginBottom: 2 }}>
+      {/* Close Icon (Left) */}
+      <IconButton color="inherit" onClick={toggleDrawer(false)} sx={{ marginRight: "auto" }}>
+        <CloseIcon />
+      </IconButton>
+
+      {/* Mini Logo and Title (Centered) */}
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          gap: 1,
+          flexGrow: 1, // This allows centering
+          justifyContent: "center", // Centering the content
+        }}
+      >
+        {/* Mini Logo (SVG) */}
+        <img src="minilogo.svg" alt="Mini Logo" style={{ width: 30, height: 30 }} />
+
+        {/* Title */}
+        <Typography variant="h6" fontWeight="bold">
+          TEKNOLOJİ
+        </Typography>
+      </Box>
+    </Box>
+
+    {/* Drawer List */}
+    <List>
+      {[
+        { label: t("home"), to: "/" },
+        { label: t("about_us"), to: "/hakkimizda" },
+        { label: t("contact"), to: "/contact" },
+        { label: t("markalar"), to: "/markalar" },
+        { label: t("cekidemiri"), to: "/cekidemiri" },
+      ].map((item, index) => (
+        <ListItem
+          key={index}
+          component={Link}
+          to={item.to}
+          onClick={toggleDrawer(false)}
+          sx={{
+            cursor: "pointer",
+            "&:hover": { backgroundColor: "#333" }, // Custom hover effect
+            "&:focus, &:active": { backgroundColor: "transparent" }, // Prevent purple color
+            textDecoration: "none",
           }}
         >
-          <Box sx={{ width: 250, padding: 2 }} role="presentation">
-            {/* Close Icon */}
-            <IconButton
-              color="inherit"
-              sx={{ marginBottom: 2 }}
-              onClick={toggleDrawer(false)}
-            >
-              <CloseIcon />
-            </IconButton>
+          <ListItemText
+            primary={item.label}
+            sx={{
+              color: "white", // Set text color to white
+              "& span": {
+                color: "white !important", // Override default MUI active/focus color
+              },
+            }}
+          />
+        </ListItem>
+      ))}
+    </List>
+  </Box>
+</Drawer>
 
-            {/* Drawer List */}
-            <List>
-              {[
-                { label: t("home"), to: "/" },
-                { label: t("about"), to: "/hakkimizda" },
-                { label: t("contact"), to: "/contact" },
-                { label: t("cekidemiri"), to: "/cekidemiri" },
-              ].map((item, index) => (
-                <ListItem
-                  key={index}
-                  component={Link}
-                  to={item.to}
-                  onClick={toggleDrawer(false)}
-                  sx={{
-                    cursor: "pointer",
-                    "&:hover": { backgroundColor: "#333" }, // Custom hover effect
-                    "&:focus, &:active": { backgroundColor: "transparent" }, // Prevent purple color
-                    textDecoration: "none",
-                  }}
-                >
-                  <ListItemText
-                    primary={item.label}
-                    sx={{
-                      color: "white", // Set text color to white
-                      "& span": {
-                        color: "white !important", // Override default MUI active/focus color
-                      },
-                    }}
-                  />
-                </ListItem>
-              ))}
-            </List>
-          </Box>
-        </Drawer>
+
 
 
         {/* Language Menu */}

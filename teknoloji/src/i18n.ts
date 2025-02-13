@@ -5,16 +5,14 @@ const resources = {
     tr: {
         translation: {
             // Header
-            home: "Ana Sayfa",
-            about: "Hakkımızda",
-            contact: "İletişim",
-            cekidemiri: "Çeki Demiri",
-            markalar: "Markalar",
+            home: "ANA SAYFA",
+            about_us: "HAKKIMIZDA",
+            contact: "İLETİŞİM",
+            cekidemiri: "ÇEKİ DEMİRİ",
+            markalar: "MARKALAR",
             language_selection: "Dil Seçimi",
             turkish: "Türkçe",
             english: "İngilizce",
-            technology_renault: "Renault",
-            technology_construction: "İnşaat",
             technology_engineering: "Mühendislik",
             work_hours: "Pazartesi - Cumartesi, 8:30 - 18:00",
             phone: "Telefon",
@@ -75,7 +73,7 @@ const resources = {
             engineering_project_card3_title: "Kontrol Hizmetleri",
             engineering_project_card4_category: "Üst Yapı",
             engineering_project_card4_title: "Projelendirme",
-            
+
 
             // Hakkımızda
             about_title: "Hakkımızda",
@@ -103,6 +101,7 @@ const resources = {
             cekidemiri_notfound: "Marka bulunamadı.",
             // Brand Page
             brandpage_text: "Modelleri",
+            brandpage_notfound: "Bu markaya ait model bulunamadı.",
             // ModelPage
             modelpage_text: "Bu model için görsel yok.",
             // Markalar
@@ -124,7 +123,7 @@ const resources = {
     en: {
         translation: {
             home: "Home",
-            about: "About",
+            about_us: "About Us",
             contact: "Contact",
             cekidemiri: "Towbar",
             markalar: "Brands",
@@ -142,11 +141,11 @@ const resources = {
             sending: "Sending...",
 
             // Home Mühendislik
-            engineering_first_title: "RELIABLE AND INNOVATIVE SOLUTIONS",
-            engineering_first_title2: "AT TEKNOLOJI ENGINEERING",
-            engineering_first_check1: "PERFECT DESIGN AND MANUFACTURING IN ENGINEERING",
-            engineering_first_check2: "EFFICIENT SOLUTIONS WITH INNOVATIVE TECHNOLOGIES",
-            engineering_first_check3: "HIGH-QUALITY SERVICE AS AN INDUSTRY LEADER",
+            engineering_first_title: "TOWBAR INSTALLATION TAILORED FOR EVERY",
+            engineering_first_title2: "BRAND AND MODEL OF YOUR VEHICLE",
+            engineering_first_check1: "PROFESSIONAL INSTALLATION",
+            engineering_first_check2: "E-HOMOLOGATION CERTIFIED PRODUCTS",
+            engineering_first_check3: "AFFORDABLE PRICES & HIGH-QUALITY WORKMANSHIP",
             engineering_first_button1: "BRANDS",
             engineering_first_button2: "TOWBARS",
             //
@@ -189,22 +188,26 @@ const resources = {
             engineering_project_card1_title: "Minibus Conversion",
             engineering_project_card2_category: "Assembly",
             engineering_project_card2_title: "Towbar Installation",
+            engineering_project_card3_category: "Periodic",
+            engineering_project_card3_title: "Inspection Services",
+            engineering_project_card4_category: "Superstructure",
+            engineering_project_card4_title: "Project Planning",
 
 
             //About Us
             about_title: "About Us",
-            about_subtitle: "Renault Technology is a leader in providing innovative solutions in the automotive industry.",
+            about_subtitle: "Teknoloji Mühendislik is a leader providing innovative solutions in the automotive sector.",
             history_title: "Our History",
-            history_text: "Founded on 07/01/2006, TEKNOLOJİ RENAULT Special Service & Spare Parts was established by service manager Levent Yanar. Between 01/01/1996 and 07/01/2006, he served as a cotech (foreman) at Erbaylar Renault Plaza, the regional dealer of our province. Since 2006, we have continued to operate under the name Teknoloji Renault Special Service & Spare Parts.",
+            history_text: "TEKNOLOJİ RENAULT Private Service & Spare Parts was established on 07/01/2006 by service manager Levent Yanar. Between 01/01/1996 and 07/01/2006, he provided cotech (foreman) services at Erbaylar Renault Plaza, the regional dealership of our province. Since 2006, we have been operating under the name Teknoloji Renault Private Service & Spare Parts.",
             expertise_title: "Expertise and Training",
-            expertise_text1: "Service Manager Levent Yanar successfully completed the cotech training program covering modern automotive technologies at the Renault training center on 17/09/1998. With this, he obtained the diploma authorizing him to diagnose and repair all vehicles in the Renault product range.",
-            expertise_text2: "On 15/10/1998, he successfully completed the mechanical course held at the Renault training center and earned his diploma.",
+            expertise_text1: "Mert Yanar graduated from Pamukkale University on 17/08/2022 with a degree in Mechanical Engineering, specializing in electric vehicle research. He also provides vehicle project services such as body modifications, engine changes, towbar installations, and more.",
+            expertise_text2: "On 15/10/1998, he successfully completed the mechanical course organized at the Renault Training Center and earned his diploma.",
             facility_title: "Our Facility",
-            facility_text: "Our service center consists of 330 m² mechanical, 360 m² bodywork, 225 m² paint, and 150 m² final inspection sections. It is equipped with all the necessary tools and equipment required for an authorized service center.",
+            facility_text: "As Teknoloji Renault Private Service, we operate in a 1,550 m² indoor facility with 12 vehicle lifts and 29 staff members, specializing in vehicle mechanical repair, electrical services, and spare parts. Additionally, our company houses a 314 m² Authorized Exhaust Emission Measurement Station. As Teknoloji Renault Private Service, we operate in a 1,550 m² indoor facility with 12 vehicle lifts and 29 staff members, specializing in vehicle mechanical repair, electrical services, and spare parts. Additionally, our company houses a 314 m² Authorized Exhaust Emission Measurement Station.",
             vision_title: "Our Vision",
-            vision_text: "By prioritizing employee training, we aim to establish quality standards, a professional approach, and a superior service mindset. Our goal is to grow on solid foundations with a fully satisfied customer policy.",
+            vision_text: "At Teknoloji Mühendislik, we aim to be a leading company in engineering solutions and technical services. By providing the highest quality standards in towbar installation, vehicle projects, and periodic inspection services, we strive to be the first name that comes to mind for reliability and expertise in the industry. Keeping up with emerging technologies, we focus on producing innovative and sustainable solutions, maximizing customer satisfaction, and continuously improving our services. In the future, we aim to expand our engineering service network, lead groundbreaking projects, and become a nationally recognized brand.",
             mission_title: "Our Mission",
-            mission_text: "To repair damages on Renault vehicles quickly and efficiently using advanced technological tools at minimum cost, providing our customers with the quality and comfort they deserve through a superior service approach that builds trust.",
+            mission_text: "At Teknoloji Mühendislik, our mission is to prioritize safety, quality, and innovation in engineering solutions while delivering the best service to our customers. In the fields of towbar installation, vehicle projects, and periodic inspection services, we offer reliable and professional solutions in compliance with legal regulations, meeting the highest standards of our partners and customers. In every project, we operate with technical expertise, engineering discipline, and meticulous attention to detail to produce sustainable and safe solutions. Customer satisfaction, occupational safety, and adaptation to technological advancements are our core values. As we move forward with confidence, we continue working towards becoming a leading engineering firm in the industry.",
             // Contact
             contact_title: "Contact",
             address: "Address",
@@ -217,6 +220,7 @@ const resources = {
             cekidemiri_notfound: "Brand not found.",
             // Brand Page
             brandpage_text: "Models",
+            brandpage_notfound: "No models available for this brand.",
             // Model Page
             modelpage_text: "No images available for this model.",
             // Markalar
@@ -232,7 +236,7 @@ const resources = {
             footer_title2: "Contact Information",
             footer_label2: "Taşyaka, 254. St. No:64, 48300 Fethiye/Muğla",
             footer_title3: "Follow Us",
-            footer_rights: "All rights reserved.",            
+            footer_rights: "All rights reserved.",
 
         },
     },
