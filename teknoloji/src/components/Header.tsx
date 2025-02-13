@@ -280,7 +280,7 @@ const Header: React.FC = () => {
 
         {/* Language Button */}
         <Button
-          variant="outlined"
+          variant="text"
           onClick={(e) => {
             e.stopPropagation();
             handleLanguageMenuClick(e);
@@ -325,8 +325,8 @@ const Header: React.FC = () => {
           display: "flex",
           alignItems: "center",
           gap: 1,
-          flexGrow: 1, // This allows centering
-          justifyContent: "center", // Centering the content
+          flexGrow: 1,
+          justifyContent: "center",
         }}
       >
         {/* Mini Logo (SVG) */}
@@ -355,8 +355,8 @@ const Header: React.FC = () => {
           onClick={toggleDrawer(false)}
           sx={{
             cursor: "pointer",
-            "&:hover": { backgroundColor: "#333" }, // Custom hover effect
-            "&:focus, &:active": { backgroundColor: "transparent" }, // Prevent purple color
+            "&:hover": { backgroundColor: "#333" },
+            "&:focus, &:active": { backgroundColor: "transparent" },
             textDecoration: "none",
           }}
         >
